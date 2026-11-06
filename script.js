@@ -308,7 +308,7 @@ const SCENES=[
   const c1=sprite('cloud',5,'cloud'); c1.style.cssText+='left:-10px;top:10px'; f.ar.appendChild(c1);
   const c2=sprite('cloud',7,'cloud'); c2.style.cssText+='right:-20px;bottom:0'; f.ar.appendChild(c2);
   const d=sprite('duck',8,'bob'); d.style.cssText+='position:relative;z-index:1'; f.ar.appendChild(d);
-  await typeTo(f.ti,'psst... someone left something for you',t);
+  await typeTo(f.ti,'HALOO WILL... someone left something for you',t);
   addBtn('start',async()=>{ await playMusic(); go(1) });
  },
  /* 1: gift */
