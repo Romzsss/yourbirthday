@@ -1,0 +1,75 @@
+/* Layout: one retro OS window centered on a dark desk; scenes swap inside it. */
+:root{
+  --desk:#0b1020; --desk-line:#16203a; --ink:#3b2a2a; --ink-soft:#6a5a5a;
+  --font:'Pixelify Sans','Courier New',monospace;
+  --w-bg:#f7e7a1; --w-ink:#7a5a1e; --w-btn:#f3a53a; --w-btn-ink:#5a3a0c;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--desk); color:#cfd6ee; font-family:var(--font);
+  padding-block:20px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  background-image:radial-gradient(var(--desk-line) 1px,transparent 1px);
+  background-size:18px 18px;
+  display:flex; flex-direction:column; align-items:center; gap:16px; overflow-x:hidden;
+}
+#stage{width:100%; display:flex; justify-content:center; min-height:min(560px,76vh); align-items:center}
+.win{
+  width:min(100%,380px); aspect-ratio:1/1.12; position:relative;
+  background:var(--w-bg); border:4px solid var(--w-ink); border-radius:6px;
+  box-shadow:6px 6px 0 rgba(0,0,0,.45), inset 0 0 0 3px rgba(255,255,255,.35);
+  display:flex; flex-direction:column; align-items:center; padding:52px 18px 20px; gap:10px;
+  transition:background .4s, transform .25s, opacity .25s; overflow:hidden; text-align:center;
+}
+.win.min{transform:scale(.05) translateY(900px); opacity:0; pointer-events:none}
+.win.shake{animation:shake .4s}
+@keyframes shake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+.bar{position:absolute; top:10px; left:10px; right:10px; display:flex; gap:6px; align-items:center}
+.bar .sp{flex:1}
+.chrome{
+  width:34px; height:26px; border:3px solid var(--w-ink); background:var(--w-btn); color:#fff;
+  display:grid; place-items:center; cursor:pointer; padding:0; border-radius:3px;
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.18), inset 3px 3px 0 rgba(255,255,255,.35);
+}
+.chrome:active{transform:translateY(1px)}
+.chrome[hidden]{display:none}
+.chrome svg{width:16px;height:16px;shape-rendering:crispEdges}
+.chrome.music{font:600 19px var(--font); line-height:1}
+.title{font-size:clamp(20px,6vw,26px); line-height:1.25; color:var(--w-ink); min-height:2.6em; margin:0; font-weight:600; text-wrap:balance}
+.sub{font-size:15px; color:var(--w-ink); min-height:1.2em; margin:-4px 0 0; opacity:.85}
+.art{flex:1; width:100%; display:flex; align-items:flex-end; justify-content:center; gap:14px; min-height:0; position:relative}
+.art canvas{image-rendering:pixelated; max-width:100%; height:auto}
+.art.fade{opacity:0; transition:opacity .5s}
+.btn{
+  font:600 16px var(--font); color:var(--w-btn-ink); background:var(--w-btn);
+  border:3px solid var(--w-btn-ink); border-radius:6px; padding:5px 18px; cursor:pointer;
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.16), 0 3px 0 var(--w-btn-ink); position:relative;
+}
+.btn:active{transform:translateY(2px); box-shadow:inset -3px -3px 0 rgba(0,0,0,.16), 0 1px 0 var(--w-btn-ink)}
+.btn[hidden]{display:none}
+:focus-visible{outline:3px dashed var(--w-ink); outline-offset:3px}
+.msg{font-size:12.5px; line-height:1.45; color:var(--w-ink); text-align:left; margin:0; width:100%; min-height:5.8em}
+.row{display:flex; justify-content:space-between; width:100%; font-size:15px; color:var(--w-ink)}
+.wobble{animation:wob 1s steps(2) infinite}
+@keyframes wob{50%{transform:translateY(-4px)}}
+.bob{animation:bob 1.6s steps(4) infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.cloud{position:absolute; opacity:.9}
+
+/* scene themes */
+.t0{--w-bg:#f8e9a6; --w-ink:#8a6420; --w-btn:#f4b24a; --w-btn-ink:#5e3d0b}
+.t1{--w-bg:#f59a9a; --w-ink:#c4413f; --w-btn:#f7b3a6; --w-btn-ink:#7a1e1e}
+.t2{--w-bg:#6fd2e6; --w-ink:#1f7fb0; --w-btn:#2f8fe0; --w-btn-ink:#0d3a73}
+.t3{--w-bg:#f4e3cf; --w-ink:#5d4a3a; --w-btn:#d83bb4; --w-btn-ink:#52104a}
+.t4{--w-bg:#b6e36a; --w-ink:#3f6b1a; --w-btn:#3f9a8a; --w-btn-ink:#123f3a}
+.t5{--w-bg:#9fa4f5; --w-ink:#4b3fa8; --w-btn:#6f63e8; --w-btn-ink:#241a6b}
+.t1 .btn,.t2 .btn{color:#fff}.t3 .btn,.t4 .btn{color:#fff}
+
+/* taskbar chip (minimized) */
+#dock{position:fixed; bottom:calc(14px + env(safe-area-inset-bottom,0px)); left:50%; transform:translateX(-50%)}
+#dock .btn{background:#e9edff; color:#1b2342; border-color:#1b2342; font-size:14px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
