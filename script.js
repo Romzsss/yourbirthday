@@ -149,7 +149,7 @@ bird:{p:{b:'#59b8f0',B:'#2f86c4',w:'#e8f6ff',k:'#1b2a3a',o:'#ff9a3c'},g:[
 "..BbbbbbbB..",
 "...b....b...",
 ]},
-cat:{p:{k:'#3b3a45',K:'#26252d',w:'#fbf3f0',p:'#ff8fb1',r:'#ff4d5e'},g:[
+cat:{p:{k:'#3b3a45',K:'#2a87c5',w:'#fbf3f0',p:'#ff8fb1',r:'#ff4d5e'},g:[
 "k..........k",
 "kk........kk",
 "kKkkkkkkkkKk",
