@@ -1,6 +1,6 @@
 /* ---------- CONFIG (edit nama, umur, pesan di sini) ---------- */
 const DEFAULT={name:'Wilda',age:21,
-  message:"So proud to know you and to be your friend. I hope you have a great year ahead, filled with love, laughter, and all the things that make you happy. You deserve it all! Keep shining bright and never forget how amazing you are. Wish you all the best. Happy birthday, Wilda!  ~r"};
+  message:"So proud to know you and to be your friend. I hope you have a great year ahead, filled with love, laughter, and all the things that make you happy. You deserve it all! Keep shining bright and never forget how amazing you are. oiyaa, semoga dilancarkan jugaa yaaa kuliah nyaa. Wish you all the best. Happy birthday, Wildaaa!  ~r"};
 const cfg=DEFAULT;
 const ord=n=>{const m=n%100; if(m>=11&&m<=13) return n+'th'; return n+({1:'st',2:'nd',3:'rd'}[n%10]||'th')};
 
